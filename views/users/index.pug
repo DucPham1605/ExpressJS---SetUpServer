@@ -1,0 +1,35 @@
+extends ../layouts/common.pug
+
+block content   
+    h1 Users
+
+    form(action="/users/search",method="GET",class="d-flex")
+        .d-flex-row
+        input(type="text",name="name",class="form-control")
+        button(class="btn btn-primary") Search
+
+    table.table
+      thead
+        tr
+          th(scope='col') Name
+          th(scope='col') Phone
+          th(scope='col') Avatar
+          th(scope='col') About
+      tbody
+        each user in users
+            tr
+                th(scope="row") 
+                    span=user.name
+                td 
+                    span=user.phone
+                td 
+                    img(src=user.avatar,width="64")
+                td
+                    button.btn.btn-light(type='button') 
+                        a(href="/users/" + user.id) View 
+                        
+
+
+
+
+
